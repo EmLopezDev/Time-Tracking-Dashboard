@@ -1,0 +1,23 @@
+@use "../utils/" as u;
+
+$spacing-300: 24;
+$spacing-500: 40;
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-navy-950);
+    color: var(--color-white);
+    padding: u.rem($spacing-500) u.rem($spacing-300);
+}

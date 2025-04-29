@@ -11,23 +11,42 @@
             sizes="32x32"
             href="./images/favicon-32x32.png"
         />
-
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./dist/styles.css" />
         <title>Frontend Mentor | Time tracking dashboard</title>
     </head>
     <body>
         <main class="container">
             <article class="card">
                 <div class="card__user">
-                    <img src="./images/image-jeremy.png" alt="user photo" />
-                    <h1>
-                        <span>Report for</span>
+                    <img
+                        class="card__user--image"
+                        src="./images/image-jeremy.png"
+                        alt="user photo"
+                    />
+                    <h1 class="card__user--header">
+                        <span class="card__user--name">Report for</span><br />
                         Jeremy Robson
                     </h1>
                 </div>
-                <div>
-                    <button>Daily</button>
-                    <button>Weekly</button>
-                    <button>Monthly</button>
+                <div class="card__user--buttons">
+                    <button id="daily-button" class="card__user--button">
+                        Daily
+                    </button>
+                    <button
+                        id="weekly-button"
+                        class="card__user--button active"
+                    >
+                        Weekly
+                    </button>
+                    <button id="monthly-button" class="card__user--button">
+                        Monthly
+                    </button>
                 </div>
             </article>
             <article class="card">

@@ -1,0 +1,68 @@
+@use "functions" as f;
+
+:root {
+    --font-family: "Rubik";
+}
+
+$font-size-xsmall: 15;
+$font-size-small: 18;
+$font-size-medium: 24;
+$font-size-large: 32;
+$font-size-xlarge: 40;
+$font-size-xxlarge: 56;
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$line-height-xsmall: 18px;
+$line-height-small: 21px;
+$line-height-medium: 28px;
+$line-height-large: 38px;
+$line-height-xlarge: 47px;
+$line-height-xxlarge: 66px;
+$letter-spacing: 0;
+
+@mixin text-preset-1 {
+    font-size: f.rem($font-size-xxlarge);
+    font-weight: $font-weight-light;
+    line-height: $line-height-xxlarge;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin text-preset-2 {
+    font-size: f.rem($font-size-xlarge);
+    font-weight: $font-weight-light;
+    line-height: $line-height-xlarge;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin text-preset-3 {
+    font-size: f.rem($font-size-large);
+    font-weight: $font-weight-light;
+    line-height: $line-height-large;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin text-preset-4 {
+    font-size: f.rem($font-size-medium);
+    font-weight: $font-weight-light;
+    line-height: $line-height-medium;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin text-preset-5 {
+    font-size: f.rem($font-size-small);
+    line-height: $line-height-small;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin text-preset-5-medium {
+    font-size: f.rem($font-size-small);
+    font-weight: $font-weight-medium;
+    line-height: $line-height-small;
+    letter-spacing: $letter-spacing;
+}
+
+@mixin text-preset-6 {
+    font-size: f.rem($font-size-xsmall);
+    line-height: $line-height-xsmall;
+    letter-spacing: $letter-spacing;
+}

@@ -1,0 +1,68 @@
+@use "../utils/" as u;
+
+$spacing-0: 0;
+$spacing-100: 8;
+$spacing-200: 16;
+$spacing-300: 24;
+$spacing-400: 32;
+$spacing-500: 40;
+
+.container {
+    min-width: u.rem(327);
+    display: grid;
+    gap: u.rem($spacing-300);
+}
+
+.card {
+    width: 100%;
+    min-height: u.rem(200);
+    background-color: var(--color-navy-900);
+    border-radius: u.rem(15);
+
+    &__user {
+        display: flex;
+        align-items: center;
+        gap: u.rem($spacing-300);
+        background-color: var(--color-purple-600);
+        padding: u.rem($spacing-400);
+        border-radius: u.rem(15);
+
+        &--image {
+            width: u.rem(64);
+            height: u.rem(64);
+            border: 3px solid var(--color-white);
+            border-radius: 50%;
+        }
+
+        &--header {
+            @include u.text-preset-4;
+        }
+
+        &--name {
+            color: var(--color-navy-200);
+            @include u.text-preset-6;
+        }
+
+        &--buttons {
+            display: flex;
+            justify-content: space-evenly;
+            padding: u.rem($spacing-300) 0;
+        }
+
+        &--button {
+            background-color: transparent;
+            border: none;
+            color: var(--color-purple-500);
+
+            @include u.text-preset-5;
+
+            &.active {
+                color: var(--color-white);
+            }
+
+            &:not(.active):hover {
+                color: var(--color-purple-200);
+            }
+        }
+    }
+}
