@@ -8,24 +8,26 @@ $spacing-400: 32;
 $spacing-500: 40;
 
 .container {
-    min-width: u.rem(327);
+    min-width: u.rem(375);
     display: grid;
     gap: u.rem($spacing-300);
 }
 
 .card {
     width: 100%;
-    min-height: u.rem(200);
     background-color: var(--color-navy-900);
     border-radius: u.rem(15);
 
     &__user {
-        display: flex;
-        align-items: center;
-        gap: u.rem($spacing-300);
-        background-color: var(--color-purple-600);
-        padding: u.rem($spacing-400);
-        border-radius: u.rem(15);
+        min-height: u.rem(200);
+
+        &--info {
+            display: flex;
+            gap: u.rem($spacing-300);
+            padding: u.rem($spacing-400);
+            background-color: var(--color-purple-600);
+            border-radius: u.rem(15);
+        }
 
         &--image {
             width: u.rem(64);
@@ -62,6 +64,66 @@ $spacing-500: 40;
 
             &:not(.active):hover {
                 color: var(--color-purple-200);
+            }
+        }
+    }
+
+    &__category {
+        min-height: u.rem(160);
+        border-radius: u.rem(15);
+        position: relative;
+
+        &.bg__work {
+            background-color: var(--color-orange);
+        }
+
+        &--image {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 u.rem($spacing-200);
+        }
+
+        &--details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: u.rem($spacing-300);
+            background-color: var(--color-navy-900);
+            border-radius: u.rem(15);
+            height: u.rem(122);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        &--header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            & > h2 {
+                @include u.text-preset-5-medium;
+            }
+
+            & img {
+                height: u.rem(5);
+            }
+        }
+
+        &--hours {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &-current {
+                @include u.text-preset-3;
+            }
+
+            &-past {
+                color: var(--color-navy-200);
+
+                @include u.text-preset-6;
             }
         }
     }
