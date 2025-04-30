@@ -1,8 +1,8 @@
 @use "functions" as f;
 
 $breakpoints: (
-    "small": f.em(768),
-    "medium": f.em(1200),
+    "small": f.em(640),
+    "medium": f.em(1024),
 );
 
 @mixin breakpoint($size) {
