@@ -77,6 +77,26 @@ $spacing-500: 40;
             background-color: var(--color-orange);
         }
 
+        &.bg__play {
+            background-color: var(--color-blue);
+        }
+
+        &.bg__study {
+            background-color: var(--color-pink);
+        }
+
+        &.bg__exercise {
+            background-color: var(--color-green);
+        }
+
+        &.bg__social {
+            background-color: var(--color-navy-200);
+        }
+
+        &.bg__self-care {
+            background-color: var(--color-yellow);
+        }
+
         &--image {
             display: flex;
             justify-content: flex-end;
