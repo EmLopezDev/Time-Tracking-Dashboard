@@ -110,12 +110,12 @@ $spacing-500: 40;
     }
 
     &__category {
-        min-height: u.rem(160);
+        min-height: u.rem(165);
         border-radius: u.rem(15);
         position: relative;
 
         @include u.breakpoint(small) {
-            height: u.rem(213);
+            height: u.rem(225);
         }
 
         @include u.breakpoint(medium) {
@@ -139,7 +139,7 @@ $spacing-500: 40;
         }
 
         &.bg__social {
-            background-color: var(--color-navy-200);
+            background-color: var(--color-purple-600);
         }
 
         &.bg__self-care {
