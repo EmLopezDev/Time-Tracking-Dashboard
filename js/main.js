@@ -2,11 +2,13 @@ const dailyButton = document.getElementById("daily-button");
 const weeklyButton = document.getElementById("weekly-button");
 const monthlyButton = document.getElementById("monthly-button");
 const categoryContainer = document.getElementById("category-container");
-const cardCategories = categoryContainer.querySelectorAll(".card__category");
+const cardCategories = categoryContainer.getElementsByClassName(
+    "card card__category"
+);
 const buttonsContainer = document.getElementById("buttons-container");
 
 const addCard = (data) => {
-    buttonsContainer.innerHTML += `
+    buttonsContainer.innerHTML = `
     <button
         id="daily-button"
         class="card__user--button"
@@ -34,6 +36,7 @@ const addCard = (data) => {
         data.title.toLowerCase() === "self care"
             ? "self-care"
             : data.title.toLowerCase();
+
     categoryContainer.innerHTML += `
     <article class="card card__category bg__${title}">
         <div class="card__category--image">
@@ -75,19 +78,30 @@ const addData = async (view) => {
             }, []);
         })
         .catch((err) => console.error(err));
-    await data.forEach((d) => addCard(d));
+    data.forEach((d) => addCard(d));
+};
+
+const setActiveView = (e) => {
+    const allButtons = document.querySelectorAll(".card__user--button");
+    const buttons = Array.from(allButtons);
+    buttons.map((button) => button.classList.remove("active"));
+
+    const [clickedButton] = buttons.filter(
+        (button) => button.id === e.target.id
+    );
+    clickedButton.classList.add("active");
+};
+
+const removeCards = () => {
+    Array.from(cardCategories).forEach((card) =>
+        categoryContainer.removeChild(card)
+    );
 };
 
 document.addEventListener("click", (e) => {
     if (e.target.matches(".card__user--button")) {
-        const allButtons = document.querySelectorAll(".card__user--button");
-        const buttons = Array.from(allButtons);
-        buttons.map((button) => button.classList.remove("active"));
-
-        const [clickedButton] = buttons.filter(
-            (button) => button.id === e.target.id
-        );
-        clickedButton.classList.add("active");
+        setActiveView(e);
+        removeCards();
         addData(e.target.value);
     }
 });
