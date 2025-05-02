@@ -17,7 +17,6 @@ const removeLoadingCards = () => {
 const showLoadingCard = (boolean) => {
     if (boolean) {
         const cards = new Array(6).fill("data");
-        console.log(cards);
         cards.map(() => {
             categoryContainer.innerHTML += `
     <article class="loading__card">
@@ -66,7 +65,7 @@ const addCard = (data) => {
 const addData = async (view) => {
     showLoadingCard(true);
     let data;
-    await fetch("/data.json")
+    await fetch("data.json")
         .then((res) => res.json())
         .then((json) => {
             data = json.reduce((acc, item) => {
