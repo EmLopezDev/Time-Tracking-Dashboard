@@ -5,33 +5,36 @@ const categoryContainer = document.getElementById("category-container");
 const cardCategories = categoryContainer.getElementsByClassName(
     "card card__category"
 );
+const loadingCards = categoryContainer.getElementsByClassName("loading__card");
 const buttonsContainer = document.getElementById("buttons-container");
 
-const addCard = (data) => {
-    buttonsContainer.innerHTML = `
-    <button
-        id="daily-button"
-        class="card__user--button"
-        value="daily"
-    >
-        Daily
-    </button>
-    <button
-        id="weekly-button"
-        class="card__user--button active"
-        value="weekly"
-    >
-        Weekly
-    </button>
-    <button
-        id="monthly-button"
-        class="card__user--button"
-        value="monthly"
-    >
-        Monthly
-    </button>
-    `;
+const removeLoadingCards = () => {
+    Array.from(loadingCards).forEach((card) =>
+        categoryContainer.removeChild(card)
+    );
+};
 
+const showLoadingCard = (boolean) => {
+    if (boolean) {
+        const cards = new Array(6).fill("data");
+        console.log(cards);
+        cards.map(() => {
+            categoryContainer.innerHTML += `
+    <article class="loading__card">
+        <div class="loading__card--header">
+            <span class="loading__card--text"></span>
+            <span class="loading__card--text"></span>
+        </div>
+        <div class="loading__card--body"></div>
+    </article>
+    `;
+        });
+    } else {
+        removeLoadingCards();
+    }
+};
+
+const addCard = (data) => {
     const title =
         data.title.toLowerCase() === "self care"
             ? "self-care"
@@ -61,6 +64,7 @@ const addCard = (data) => {
 };
 
 const addData = async (view) => {
+    showLoadingCard(true);
     let data;
     await fetch("/data.json")
         .then((res) => res.json())
@@ -78,30 +82,30 @@ const addData = async (view) => {
             }, []);
         })
         .catch((err) => console.error(err));
+    showLoadingCard(false);
     data.forEach((d) => addCard(d));
 };
 
-const setActiveView = (e) => {
+const setActiveView = (id) => {
     const allButtons = document.querySelectorAll(".card__user--button");
     const buttons = Array.from(allButtons);
     buttons.map((button) => button.classList.remove("active"));
 
-    const [clickedButton] = buttons.filter(
-        (button) => button.id === e.target.id
-    );
+    const [clickedButton] = buttons.filter((button) => button.id === id);
     clickedButton.classList.add("active");
 };
 
-const removeCards = () => {
+const removeCategoryCards = () => {
     Array.from(cardCategories).forEach((card) =>
         categoryContainer.removeChild(card)
     );
 };
 
 document.addEventListener("click", (e) => {
+    if (e.target.matches(".active")) return;
     if (e.target.matches(".card__user--button")) {
-        setActiveView(e);
-        removeCards();
+        removeCategoryCards();
+        setActiveView(e.target.id);
         addData(e.target.value);
     }
 });

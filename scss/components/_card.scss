@@ -10,9 +10,10 @@ $spacing-500: 40;
 .container {
     min-width: u.rem(375);
     max-width: u.rem(1200);
+    min-height: 100%;
     width: 100%;
     display: grid;
-    grid-column: 1fr;
+    grid-template-columns: 1fr;
     gap: u.rem($spacing-300);
 
     @include u.breakpoint(small) {
