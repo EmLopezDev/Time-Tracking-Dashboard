@@ -19,14 +19,14 @@ const showLoadingCard = (boolean) => {
         const cards = new Array(6).fill("data");
         cards.map(() => {
             categoryContainer.innerHTML += `
-    <article class="loading__card">
-        <div class="loading__card--header">
-            <span class="loading__card--text"></span>
-            <span class="loading__card--text"></span>
-        </div>
-        <div class="loading__card--body"></div>
-    </article>
-    `;
+                <article class="loading__card">
+                    <div class="loading__card--header">
+                        <span class="loading__card--text"></span>
+                        <span class="loading__card--text"></span>
+                    </div>
+                    <div class="loading__card--body"></div>
+                </article>
+            `;
         });
     } else {
         removeLoadingCards();
@@ -40,25 +40,27 @@ const addCard = (data) => {
             : data.title.toLowerCase();
 
     categoryContainer.innerHTML += `
-    <article class="card card__category bg__${title}">
-        <div class="card__category--image">
-            <img src="./images/icon-${title}.svg" alt="" />
-        </div>
-        <div class="card__category--details">
-            <div class="card__category--header">
-                <h2>${data.title}</h2>
-                <img src="./images/icon-ellipsis.svg" alt="" />
+        <article class="card card__category bg__${title}">
+            <div class="card__category--image">
+                <img src="./images/icon-${title}.svg" alt="" />
             </div>
-            <div class="card__category--hours">
-                <span class="card__category--hours-current">
-                    ${Object.values(data.timeframes)[0].current}hrs
-                </span>
-                <span class="card__category--hours-past">
-                    Last Week - ${Object.values(data.timeframes)[0].previous}hrs
-                </span>
+            <div class="card__category--details">
+                <div class="card__category--header">
+                    <h2>${data.title}</h2>
+                    <img src="./images/icon-ellipsis.svg" alt="" />
+                </div>
+                <div class="card__category--hours">
+                    <span class="card__category--hours-current">
+                        ${Object.values(data.timeframes)[0].current}hrs
+                    </span>
+                    <span class="card__category--hours-past">
+                        Last Week - ${
+                            Object.values(data.timeframes)[0].previous
+                        }hrs
+                    </span>
+                </div>
             </div>
-        </div>
-    </article>
+        </article>
     `;
 };
 
